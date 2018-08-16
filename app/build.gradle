@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+    defaultConfig {
+        applicationId "com.live"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.versionCode
+        versionName versions.versionName
+        ndk {
+            abiFilters "armeabi-v7a"
+        }
+    }
+    buildTypes {
+        debug {
+            minifyEnabled true
+            zipAlignEnabled true  //Zip代码压缩优化
+            shrinkResources true  //移除无用资源
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled true
+            zipAlignEnabled true  //Zip代码压缩优化
+            shrinkResources true  //移除无用资源
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:${compiles.supportLibrary}"
+    implementation "com.android.support:support-v4:${compiles.supportLibrary}"
+    implementation "com.android.support:recyclerview-v7:${compiles.supportLibrary}"
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:${compiles.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${compiles.retrofit}"
+
+    //gson
+    implementation "com.google.code.gson:gson:${compiles.gson}"
+    //leakcanary
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:${compiles.leakcanary}"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${compiles.leakcanary}"
+    //fresco
+    implementation "com.facebook.fresco:fresco:${compiles.fresco}"
+    //butterknife
+    implementation "com.jakewharton:butterknife:${compiles.butterknife}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${compiles.butterknife}"
+    //adapter
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:${compiles.adapter}"
+}

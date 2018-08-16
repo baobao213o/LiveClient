@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+    <color name="blue_1">#e3f2fD</color>
+    <color name="blue_2">#2196f3</color>
+    <color name="blue_3">#1976d2</color>
+
+    <color name="green_1">#c8e6c9</color>
+    <color name="green_2">#81c784</color>
+    <color name="green_3">#4caf50</color>
+    <color name="green_4">#388e3c</color>
+    <color name="green_5">#2e7d32</color>
+
+    <color name="yellow_1">#ffffcc</color>
+    <color name="yellow_2">#ffff99</color>
+    <color name="yellow_3">#ffff66</color>
+    <color name="yellow_4">#ffff33</color>
+    <color name="yellow_5">#ffff00</color>
+    <color name="yellow_6">#ffdd00</color>
+    <color name="yellow_7">#ffaa00</color>
+
+    <color name="red_0">#FFECEC</color>
+    <color name="red_1">#ffD2D2</color>
+    <color name="red_2">#ffB5B5</color>
+    <color name="red_3">#ff9797</color>
+    <color name="red_4">#ff7575</color>
+    <color name="red_5">#ff5151</color>
+    <color name="red_6">#ff2D2D</color>
+    <color name="red_7">#ff0000</color>
+    <color name="red_8">#EA0000</color>
+
+    <color name="grey_1">#f5f5f5</color>
+    <color name="grey_2">#e5e5e5</color>
+    <color name="grey_3">#d1d1d1</color>
+    <color name="grey_4">#a0a0a0</color>
+    <color name="grey_5">#757575</color>
+    <color name="grey_6">#616161</color>
+    <color name="grey_7">#424242</color>
+    <color name="grey_8">#303030</color>
+
+    <color name="dark_10_percent">#19000000</color>
+    <color name="dark_30_percent">#4d000000</color>
+    <color name="dark_50_percent">#80000000</color>
+    <color name="dark_70_percent">#b3000000</color>
+
+    <color name="pink">#FF99CC</color>
+    <color name="activity_bg">@color/grey_1</color>
+    <color name="translucent">#00000000</color>
+
+</resources>

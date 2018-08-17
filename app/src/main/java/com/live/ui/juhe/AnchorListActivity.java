@@ -1,13 +1,14 @@
-package com.live.ui;
+package com.live.ui.juhe;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 
 import com.live.R;
 import com.live.adpter.AnchorAdapter;
-import com.live.api.LiveService;
+import com.live.api.JuheService;
 import com.live.entity.Anchor;
 import com.live.network.RetrofitManager;
 
@@ -16,21 +17,30 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.prototypez.savestate.core.annotation.AutoRestore;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AnchorActivity extends AppCompatActivity {
+public class AnchorListActivity extends AppCompatActivity {
 
     @BindView(R.id.rv_activity_anchor)
     RecyclerView rv_activity_anchor;
     @BindView(R.id.srl_activity_anchor)
     SwipeRefreshLayout srl_activity_anchor;
+    @BindView(R.id.toolbar_activity_anchor)
+    Toolbar toolbar_activity_anchor;
+
 
     private List<Anchor.ZhuboBean> list = new ArrayList<>();
     private AnchorAdapter adapter;
 
-    private String addr;
+    @AutoRestore("addr")
+    String addr;
+
+    @AutoRestore("title")
+    String title;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +51,12 @@ public class AnchorActivity extends AppCompatActivity {
         adapter = new AnchorAdapter(list);
         rv_activity_anchor.setAdapter(adapter);
 
-        if (savedInstanceState == null) {
-            addr = getIntent().getStringExtra("addr");
-        } else {
-            addr = savedInstanceState.getString("addr");
-        }
+        addr = getIntent().getStringExtra("addr");
+        title = getIntent().getStringExtra("title");
+
+        toolbar_activity_anchor.setTitle(title);
+        setSupportActionBar(toolbar_activity_anchor);
+
 
         srl_activity_anchor.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -63,15 +74,9 @@ public class AnchorActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putString("addr", addr);
-        super.onSaveInstanceState(outState);
-    }
-
 
     private void requestData() {
-        RetrofitManager.getInstance().getService(LiveService.class).getAnchor(addr).enqueue(new Callback<Anchor>() {
+        RetrofitManager.getInstance().getService(JuheService.class).getAnchor(addr).enqueue(new Callback<Anchor>() {
             @Override
             public void onResponse(Call<Anchor> call, Response<Anchor> response) {
                 srl_activity_anchor.setRefreshing(false);

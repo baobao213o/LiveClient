@@ -1,4 +1,4 @@
-package com.live.ui;
+package com.live.ui.juhe;
 
 import android.graphics.PixelFormat;
 import android.media.AudioManager;
@@ -18,6 +18,7 @@ import com.live.view.ToastHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.prototypez.savestate.core.annotation.AutoRestore;
 
 public class BDLiveActivity extends AppCompatActivity implements IMediaPlayer.OnPreparedListener,
         IMediaPlayer.OnCompletionListener, IMediaPlayer.OnErrorListener,
@@ -26,7 +27,9 @@ public class BDLiveActivity extends AppCompatActivity implements IMediaPlayer.On
 
     @BindView(R.id.vv_activty_bdlive)
     BDCloudVideoView mVV;
-    private String url;
+
+    @AutoRestore("url")
+    String url;
 
     private int bright = 0;
 
@@ -47,11 +50,7 @@ public class BDLiveActivity extends AppCompatActivity implements IMediaPlayer.On
         setContentView(R.layout.activity_bdlive);
         ButterKnife.bind(this);
 
-        if (savedInstanceState == null) {
-            url = getIntent().getStringExtra("url");
-        } else {
-            url = savedInstanceState.getString("url");
-        }
+        url = getIntent().getStringExtra("url");
 
         bright = getScreenBrightness();
 //        //初始化音频管理器
@@ -175,12 +174,6 @@ public class BDLiveActivity extends AppCompatActivity implements IMediaPlayer.On
         super.onDestroy();
     }
 
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putString("url", url);
-        super.onSaveInstanceState(outState);
-    }
 
     @Override
     public boolean onInfo(IMediaPlayer mp, int what, int extra) {

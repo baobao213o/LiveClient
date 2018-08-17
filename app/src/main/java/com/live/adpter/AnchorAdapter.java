@@ -10,7 +10,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.live.R;
 import com.live.entity.Anchor;
-import com.live.ui.BDLiveActivity;
+import com.live.ui.juhe.BDLiveActivity;
 
 import java.util.List;
 

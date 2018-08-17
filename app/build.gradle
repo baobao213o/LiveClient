@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'save.state'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -13,6 +14,18 @@ android {
             abiFilters "armeabi-v7a"
         }
     }
+
+
+    signingConfigs {
+        debug {
+            storeFile file('../keystore.jks')
+            storePassword "hold213"
+            keyAlias "hahaha"
+            keyPassword "hold213"
+        }
+    }
+
+
     buildTypes {
         debug {
             minifyEnabled true

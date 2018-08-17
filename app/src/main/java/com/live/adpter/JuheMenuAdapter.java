@@ -9,20 +9,20 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.live.R;
-import com.live.entity.LiveMenu;
-import com.live.ui.AnchorActivity;
+import com.live.entity.JuheMenu;
+import com.live.ui.juhe.AnchorListActivity;
 
 import java.util.List;
 
-public class LiveMenuAdapter extends BaseQuickAdapter<LiveMenu.PingtaiBean, BaseViewHolder> {
+public class JuheMenuAdapter extends BaseQuickAdapter<JuheMenu.PingtaiBean, BaseViewHolder> {
 
 
-    public LiveMenuAdapter(@Nullable List<LiveMenu.PingtaiBean> data) {
+    public JuheMenuAdapter(@Nullable List<JuheMenu.PingtaiBean> data) {
         super(R.layout.item_live_menu, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder holder, final LiveMenu.PingtaiBean item) {
+    protected void convert(BaseViewHolder holder, final JuheMenu.PingtaiBean item) {
         String url;
         try {
             url = item.xinimg;
@@ -36,8 +36,9 @@ public class LiveMenuAdapter extends BaseQuickAdapter<LiveMenu.PingtaiBean, Base
         holder.getView(R.id.iv_live_menu_avator).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, AnchorActivity.class);
+                Intent intent = new Intent(mContext, AnchorListActivity.class);
                 intent.putExtra("addr", item.address);
+                intent.putExtra("title", item.title);
                 mContext.startActivity(intent);
             }
         });

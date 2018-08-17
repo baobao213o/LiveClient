@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.BDLiveActivity">
+    tools:context=".ui.juhe.BDLiveActivity">
 
     <com.live.view.BDCloudVideo.BDCloudVideoView
         android:id="@+id/vv_activty_bdlive"

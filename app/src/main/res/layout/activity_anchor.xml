@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/srl_activity_anchor"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_activity_anchor"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_activity_anchor"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:titleTextColor="@color/white"
+        android:background="@color/colorPrimaryDark"
+        />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_activity_anchor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        app:layoutManager="android.support.v7.widget.GridLayoutManager"
-        app:spanCount="3" />
+        android:layout_marginTop="40dp"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_activity_anchor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            app:layoutManager="android.support.v7.widget.GridLayoutManager"
+            app:spanCount="3" />
 
 
-</android.support.v4.widget.SwipeRefreshLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</FrameLayout>
+
+
+
 

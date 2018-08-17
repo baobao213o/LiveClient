@@ -2,7 +2,7 @@ package com.live.entity;
 
 import java.util.List;
 
-public class LiveMenu {
+public class JuheMenu {
 
     public List<PingtaiBean> pingtai;
 

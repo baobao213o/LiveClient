@@ -8,9 +8,8 @@ import com.live.LiveApp;
 public class ToastHelper {
 
     public static void showToast(String content) {
-        Toast toast = new Toast(LiveApp.getInstance());
+        Toast toast = Toast.makeText(LiveApp.getInstance(), "", Toast.LENGTH_SHORT);
         toast.setText(content);
-        toast.setDuration(Toast.LENGTH_SHORT);
         toast.show();
     }
 

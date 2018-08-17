@@ -17,17 +17,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.main.MainActivity" />
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:theme="@style/AppTheme.NoToolBar.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.SplashActivity" />
-        <activity android:name=".ui.AnchorActivity" />
+        <activity android:name=".ui.juhe.AnchorListActivity" />
         <activity
-            android:name=".ui.BDLiveActivity"
-            android:theme="@style/NoToolBar" />
+            android:name=".ui.juhe.BDLiveActivity"
+            android:theme="@style/AppTheme.NoToolBar" />
 
     </application>
 

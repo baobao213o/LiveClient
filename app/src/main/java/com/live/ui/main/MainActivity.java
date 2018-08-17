@@ -1,10 +1,15 @@
-package com.live.ui;
+package com.live.ui.main;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.live.R;
+import com.live.entity.ServerInfo;
+import com.live.network.RetrofitManager;
+import com.live.ui.juhe.LiveMenuFragment;
+
+import io.github.prototypez.savestate.core.annotation.AutoRestore;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String SELECTED_ITEM = "arg_selected_item";
 
+    @AutoRestore("AppData")
+    ServerInfo serverInfo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
             index = savedInstanceState.getString(SELECTED_ITEM, index);
             liveMenuFragment = (LiveMenuFragment) getSupportFragmentManager().findFragmentByTag(FRAG_LIVE);
         }
+        serverInfo = (ServerInfo) getIntent().getSerializableExtra("AppData");
+
         showFragment();
     }
 
@@ -31,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         hideFragment(fragmentTransaction);
         switch (index) {
             case FRAG_LIVE:
+                RetrofitManager.getInstance().applyNewUrl(serverInfo.client_addr);
                 if (liveMenuFragment == null) {
                     liveMenuFragment = new LiveMenuFragment();
                     fragmentTransaction.add(R.id.main_container, liveMenuFragment, FRAG_LIVE);

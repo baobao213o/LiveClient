@@ -19,15 +19,15 @@ import static org.apache.http.conn.ssl.SSLSocketFactory.STRICT_HOSTNAME_VERIFIER
 
 public class RetrofitManager {
 
-    private static OkHttpClient okHttpClient;
+    private OkHttpClient okHttpClient;
 
     private static volatile RetrofitManager instance;
 
     private Retrofit retrofit;
 
-    private static ArrayMap<String, Object> serviceCacheMap;
+    private ArrayMap<String, Object> serviceCacheMap;
 
-    private final static String BASE_URL = "http://api.hclyz.cn:81/mf/";
+    private final static String BASE_URL = "http://www.baidu.com/";
 
     private RetrofitManager() {
         serviceCacheMap = new ArrayMap<>();
@@ -44,11 +44,23 @@ public class RetrofitManager {
         return instance;
     }
 
-    public void init() {
+    private void init() {
         retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(initOkHttpClient())
                 .baseUrl(BASE_URL)
+                .build();
+    }
+
+
+    public void applyNewUrl(String url) {
+        if (retrofit.baseUrl().toString().equals(url)) {
+            return;
+        }
+        retrofit = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(initOkHttpClient())
+                .baseUrl(url)
                 .build();
     }
 
@@ -65,7 +77,7 @@ public class RetrofitManager {
         return result;
     }
 
-    private static OkHttpClient initOkHttpClient() {
+    private OkHttpClient initOkHttpClient() {
         if (okHttpClient == null) {
             okHttpClient = createOkhttp();
         }

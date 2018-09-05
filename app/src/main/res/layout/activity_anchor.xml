@@ -8,7 +8,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_activity_anchor"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         app:titleTextColor="@color/white"
         android:background="@color/colorPrimaryDark"
         />
@@ -17,7 +17,7 @@
         android:id="@+id/srl_activity_anchor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         >
 
         <android.support.v7.widget.RecyclerView
@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical"
-            app:layoutManager="android.support.v7.widget.GridLayoutManager"
+            app:layoutManager="android.support.v7.widget.StaggeredGridLayoutManager"
             app:spanCount="3" />
 
 

@@ -16,7 +16,7 @@ public class ServerInfo implements Serializable{
     public String ad_addr;
     public String client_addr;
     public String hongbao_addr;
-    public String version;
+    public int version;
     public String update_addr;
 
 }

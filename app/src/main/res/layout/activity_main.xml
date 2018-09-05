@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,17 +11,29 @@
         android:id="@+id/toolbar_activity_main"
         android:layout_width="match_parent"
         app:title="@string/app_name"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         app:titleTextColor="@color/white"
         android:background="@color/colorPrimaryDark"
         />
 
     <FrameLayout
-        android:id="@+id/main_container"
+        android:id="@+id/fl_activity_main_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/toolbar_activity_main"
         app:layout_constraintBottom_toBottomOf="parent"
         />
+
+    <com.linroid.filtermenu.library.FilterMenuLayout
+        android:id="@+id/menu_activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="8dp"
+        app:fm_expandedRadius="96dp"
+        app:fm_collapsedRadius="25dp"
+        app:fm_centerBottom="50dp"
+        app:fm_centerRight="50dp"
+        app:fm_primaryColor="@color/blue_3"
+        app:fm_primaryDarkColor="@color/colorPrimaryDark"/>
 
 </android.support.constraint.ConstraintLayout>

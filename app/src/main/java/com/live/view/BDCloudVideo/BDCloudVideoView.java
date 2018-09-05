@@ -517,20 +517,12 @@ public class BDCloudVideoView extends FrameLayout implements MediaController.Med
             // target state that was there before.
             setCurrentState(PlayerState.STATE_PREPARING);
 //            attachMediaController();
-        } catch (IOException ex) {
+        } catch (IOException | IllegalArgumentException ex) {
             Log.w(TAG, "Unable to open content: " + mUri, ex);
             setCurrentState(PlayerState.STATE_ERROR);
 //            mTargetState = STATE_ERROR;
             isTryToPlaying = false;
             mErrorListener.onError(mMediaPlayer, MediaPlayer.MEDIA_ERROR_UNKNOWN, 0);
-        } catch (IllegalArgumentException ex) {
-            Log.w(TAG, "Unable to open content: " + mUri, ex);
-            setCurrentState(PlayerState.STATE_ERROR);
-//            mTargetState = STATE_ERROR;
-            isTryToPlaying = false;
-            mErrorListener.onError(mMediaPlayer, MediaPlayer.MEDIA_ERROR_UNKNOWN, 0);
-        } finally {
-            // REMOVED: mPendingSubtitleTracks.clear();
         }
     }
 

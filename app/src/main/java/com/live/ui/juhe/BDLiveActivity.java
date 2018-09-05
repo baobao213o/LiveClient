@@ -5,13 +5,13 @@ import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.baidu.cloud.media.player.IMediaPlayer;
 import com.live.R;
+import com.live.base.BaseActivity;
 import com.live.utils.DeviceUtil;
 import com.live.view.BDCloudVideo.BDCloudVideoView;
 import com.live.view.ToastHelper;
@@ -20,7 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.prototypez.savestate.core.annotation.AutoRestore;
 
-public class BDLiveActivity extends AppCompatActivity implements IMediaPlayer.OnPreparedListener,
+public class BDLiveActivity extends BaseActivity implements IMediaPlayer.OnPreparedListener,
         IMediaPlayer.OnCompletionListener, IMediaPlayer.OnErrorListener,
         IMediaPlayer.OnInfoListener, IMediaPlayer.OnBufferingUpdateListener,
         BDCloudVideoView.OnPlayerStateListener {
@@ -57,7 +57,7 @@ public class BDLiveActivity extends AppCompatActivity implements IMediaPlayer.On
         mAudioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 
         //设置ak
-        BDCloudVideoView.setAK("b98ce254325147ec83572bcf2abfc43d");
+//        BDCloudVideoView.setAK("b98ce254325147ec83572bcf2abfc43d");
         //注册listener
         mVV.setOnPreparedListener(this);
         mVV.setOnCompletionListener(this);

@@ -2,12 +2,9 @@ package com.live;
 
 import android.app.Application;
 import android.content.Context;
-import android.os.StrictMode;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.squareup.leakcanary.LeakCanary;
-
-import static com.live.BuildConfig.DEBUG;
 
 public class LiveApp extends Application{
 
@@ -27,16 +24,16 @@ public class LiveApp extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
-        if (DEBUG) {
-            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .build());
-            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .build());
-        }
+//        if (DEBUG) {
+//            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+//                    .detectAll()
+//                    .penaltyLog()
+//                    .build());
+//            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+//                    .detectAll()
+//                    .penaltyLog()
+//                    .build());
+//        }
         LeakCanary.install(this);
         Fresco.initialize(this);
     }

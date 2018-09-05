@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Live</string>
+
+
+    <string name="common_dialog_confirm">确定</string>
+    <string name="common_dialog_cancel">取消</string>
+    <string name="common_dialog_login">登录</string>
+    <string name="common_dialog_exit">退出</string>
+    <string name="common_dialog_loading">加载中</string>
+
 </resources>

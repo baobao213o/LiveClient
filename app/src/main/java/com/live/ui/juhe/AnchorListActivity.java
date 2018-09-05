@@ -2,13 +2,13 @@ package com.live.ui.juhe;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.live.R;
 import com.live.adpter.AnchorAdapter;
 import com.live.api.JuheService;
+import com.live.base.BaseActivity;
 import com.live.entity.Anchor;
 import com.live.network.RetrofitManager;
 
@@ -22,7 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AnchorListActivity extends AppCompatActivity {
+public class AnchorListActivity extends BaseActivity {
 
     @BindView(R.id.rv_activity_anchor)
     RecyclerView rv_activity_anchor;

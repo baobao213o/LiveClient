@@ -13,6 +13,7 @@ android {
         ndk {
             abiFilters "armeabi-v7a"
         }
+
     }
 
 
@@ -28,19 +29,24 @@ android {
 
     buildTypes {
         debug {
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+
+        release {
+
             minifyEnabled true
             zipAlignEnabled true  //Zip代码压缩优化
             shrinkResources true  //移除无用资源
             useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-
-        release {
-            minifyEnabled true
-            zipAlignEnabled true  //Zip代码压缩优化
-            shrinkResources true  //移除无用资源
-            useProguard true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
         }
     }
 }
@@ -69,4 +75,12 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:${compiles.butterknife}"
     //adapter
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:${compiles.adapter}"
+
+    //dialog
+    implementation ("com.afollestad.material-dialogs:core:${compiles.dialog}"){
+        exclude group: 'com.android.support'
+    }
+
+    implementation(name: 'menu', ext: 'aar')
+
 }

@@ -12,6 +12,7 @@ buildscript {
         // in the individual module build.gradle files
         // dependency for save-state
         classpath "io.github.prototypez:save-state:0.1.8"
+        classpath "com.jakewharton:butterknife-gradle-plugin:8.8.1"
     }
 }
 
@@ -27,7 +28,7 @@ ext {
     versions = [
             'compileSdk' : 26,
             'targetSdk'  : 26,
-            'minSdk'     : 16,
+            'minSdk'     : 21,
             'buildTools' : '27.0.3',
             'versionCode': 1,
             'versionName': '1.0'
@@ -39,7 +40,9 @@ ext {
             'leakcanary'    : '1.5.4',
             'fresco'        : '0.12.0',
             'butterknife'   : '8.8.1',
-            'adapter'       : '2.9.40'
+            'adapter'       : '2.9.40',
+            'dialog'        : '0.9.6.0',
+            'menu'          : '0.2.3@aar',
     ]
 }
 

@@ -1,10 +1,13 @@
 package com.live;
 
-public interface Constant {
+public class Constant {
 
-    String server_url = "http://192.168.191.1:8080/mobile/";
 
     //验证app
-    String VALIDATE_URL = server_url + "validate";
+    public final static String VALIDATE_URL = "validate";
+
+    //下载
+    public final static String DOWN_URL = "down";
+
 
 }

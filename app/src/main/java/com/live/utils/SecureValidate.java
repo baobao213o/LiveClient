@@ -22,7 +22,7 @@ public class SecureValidate {
         return pkName;
     }
 
-    public static String getVerCode() {
+    public static int getVerCode() {
         int verCode = 0;
         try {
             String pkName = LiveApp.getInstance().getPackageName();
@@ -30,7 +30,7 @@ public class SecureValidate {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return String.valueOf(verCode);
+        return verCode;
     }
 
     public static String printSignatureMD5() {

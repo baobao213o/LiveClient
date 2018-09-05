@@ -19,6 +19,20 @@ import static org.apache.http.conn.ssl.SSLSocketFactory.STRICT_HOSTNAME_VERIFIER
 
 public class RetrofitManager {
 
+
+    static {
+        System.loadLibrary("const");
+    }
+
+    //    String server_url = "http://35.201.172.238:8080/live-nyannyannyan/";
+    private static native String getRemoteUrl();
+    //    String server_url = "http://192.168.191.1:8080/";
+    private static native String getLocalDebugUrl();
+    //    String server_url = "http://192.168.191.1:8080/live-nyannyannyan/";
+    private static native String getLocalUrl();
+
+
+
     private OkHttpClient okHttpClient;
 
     private static volatile RetrofitManager instance;
@@ -27,7 +41,11 @@ public class RetrofitManager {
 
     private ArrayMap<String, Object> serviceCacheMap;
 
-    private final static String BASE_URL = "http://www.baidu.com/";
+//    private final static String BASE_URL = getRemoteUrl();
+    private final static String BASE_URL = getLocalDebugUrl();
+//    private final static String BASE_URL = getLocalUrl();
+
+
 
     private RetrofitManager() {
         serviceCacheMap = new ArrayMap<>();
@@ -107,6 +125,12 @@ public class RetrofitManager {
                 .cache(cache)
                 .proxy(Proxy.NO_PROXY)
                 .build();
+    }
+
+    public void cancelAllRequest() {
+        if (okHttpClient != null) {
+            okHttpClient.dispatcher().cancelAll();
+        }
     }
 }
 

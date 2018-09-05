@@ -59,7 +59,6 @@ public class LiveMenuFragment extends Fragment {
             }
         });
 
-
         return view;
     }
 

@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">Live</string>
+    <string name="app_name">Muses</string>
+
+    <string name="my_notice">公告</string>
+    <string name="my_notice_tip">公告以及意见点这里</string>
+    <string name="my_notice_send_hint">提出你的意见</string>
+    <string name="my_version_name">Ver&#160;&#160;%s</string>
 
 
     <string name="common_dialog_confirm">确定</string>

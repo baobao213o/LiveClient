@@ -12,8 +12,8 @@ import android.support.v4.content.FileProvider;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.live.LiveApp;
-import com.live.api.ValidateService;
-import com.live.network.HttpCallBack;
+import com.live.api.MainService;
+import com.live.network.HttpDownLoadCallBack;
 import com.live.network.RetrofitManager;
 
 import java.io.File;
@@ -29,8 +29,8 @@ import retrofit2.Response;
 
 public class DownloadManager {
 
-    public static void downloadApk(final Activity activity, final String url, final HttpCallBack callBack) {
-        RetrofitManager.getInstance().getService(ValidateService.class).downloadApk().enqueue(new Callback<ResponseBody>() {
+    public static void downloadApk(final Activity activity, final String url, final HttpDownLoadCallBack callBack) {
+        RetrofitManager.getInstance().getService(MainService.class).downloadApk().enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, final Response<ResponseBody> response) {
                 if (response == null) {
@@ -75,7 +75,7 @@ public class DownloadManager {
 
     }
 
-    private static void writeFile2Disk(final Activity activity, Response<ResponseBody> response, String filename, HttpCallBack httpCallBack) {
+    private static void writeFile2Disk(final Activity activity, Response<ResponseBody> response, String filename, HttpDownLoadCallBack httpCallBack) {
 
         File file = createFile(filename);
         if (file == null) {

@@ -85,16 +85,14 @@ public class MainActivity extends BaseActivity {
     }
 
     private void showFragment(String index) {
-
         switch (index) {
             case FRAG_LIVE:
-                synchronized (this) {
-                    RetrofitManager.getInstance().applyNewUrl(serverInfo.client_addr);
-                }
+                RetrofitManager.getInstance().applyNewUrl(serverInfo.client_addr);
                 toolbar_activity_main.setTitle("聚合直播");
                 break;
             case FRAG_MY:
-                toolbar_activity_main.setTitle("我的");
+                RetrofitManager.getInstance().applyNewUrl(RetrofitManager.BASE_URL);
+                toolbar_activity_main.setTitle("关于");
                 break;
         }
         if (this.index.equals(index)) {

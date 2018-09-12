@@ -12,11 +12,11 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.live.R;
-import com.live.api.ValidateService;
+import com.live.api.MainService;
 import com.live.base.BaseActivity;
-import com.live.entity.BaseServerResponse;
 import com.live.entity.ServerInfo;
-import com.live.network.HttpCallBack;
+import com.live.network.CheckBaseServerInfoResult;
+import com.live.network.HttpDownLoadCallBack;
 import com.live.network.RetrofitManager;
 import com.live.ui.main.MainActivity;
 import com.live.utils.DownloadManager;
@@ -24,10 +24,6 @@ import com.live.utils.MaterialDialogUtil;
 import com.live.utils.NetworkUtil;
 import com.live.utils.SecureValidate;
 import com.live.utils.ServerInfoManager;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class SplashActivity extends BaseActivity {
 
@@ -37,23 +33,9 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        RetrofitManager.getInstance().getService(ValidateService.class).getServerInfo(SecureValidate.printSignatureMD5(), SecureValidate.getPkgName(), String.valueOf(SecureValidate.getVerCode())).enqueue(new Callback<BaseServerResponse<ServerInfo>>() {
+        RetrofitManager.getInstance().getService(MainService.class).getServerInfo(SecureValidate.printSignatureMD5(), SecureValidate.getPkgName(), String.valueOf(SecureValidate.getVerCode())).enqueue(new CheckBaseServerInfoResult<>(this, 2, new CheckBaseServerInfoResult.HttpCallBack<ServerInfo>() {
             @Override
-            public void onResponse(Call<BaseServerResponse<ServerInfo>> call, Response<BaseServerResponse<ServerInfo>> response) {
-                BaseServerResponse<ServerInfo> temp = response.body();
-                if (temp == null) {
-                    showErrorDialog("请求出错");
-                    return;
-                }
-                if (!BaseServerResponse.isSuccess(temp)) {
-                    showErrorDialog(temp.msg);
-                    return;
-                }
-                final ServerInfo data = temp.data;
-                if (data == null) {
-                    showErrorDialog("请求数据为空");
-                    return;
-                }
+            public void onSucess(final ServerInfo data) {
                 ServerInfoManager.getInstance().setServerInfo(data);
                 int curVerCode = SecureValidate.getVerCode();
                 if (curVerCode < data.version) {
@@ -75,33 +57,32 @@ public class SplashActivity extends BaseActivity {
                     return;
                 }
                 if (!TextUtils.isEmpty(data.hongbao_addr)) {
-                    MaterialDialogUtil.showMsgWithoutTitle(SplashActivity.this, "点一点支付宝领红包", "我点", "鬼信", new MaterialDialog.SingleButtonCallback() {
+                    new MaterialDialog.Builder(SplashActivity.this).content("点一点支付宝领红包").positiveText("试试").onPositive(new MaterialDialog.SingleButtonCallback() {
                         @Override
                         public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                             Uri uri = Uri.parse(data.hongbao_addr);
                             Intent browserIntent = new Intent(Intent.ACTION_VIEW, uri);
                             Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
-
                             Intent[] intents = new Intent[]{mainIntent, browserIntent};
                             startActivities(intents);
                             finish();
                         }
-                    }, new MaterialDialog.SingleButtonCallback() {
+                    }).negativeText("鬼信").onNegative(new MaterialDialog.SingleButtonCallback() {
                         @Override
                         public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                             jump();
                         }
-                    });
+                    }).cancelable(false).build().show();
                 } else {
                     jump();
                 }
             }
 
             @Override
-            public void onFailure(Call<BaseServerResponse<ServerInfo>> call, Throwable t) {
-                showErrorDialog("网络连接失败");
+            public void onFailure() {
+
             }
-        });
+        }));
     }
 
     private void jump() {
@@ -111,21 +92,11 @@ public class SplashActivity extends BaseActivity {
     }
 
 
-    private void showErrorDialog(String content) {
-
-        MaterialDialogUtil.showMsgWithoutTitle(this, content, "确定", new MaterialDialog.SingleButtonCallback() {
-            @Override
-            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                finish();
-            }
-        });
-    }
-
     private void fetchDownLoad(String url) {
         View view = LayoutInflater.from(this).inflate(R.layout.dialog_tip, null);
         final TextView tv_common_dialog_tip = view.findViewById(R.id.tv_common_dialog_tip);
         new MaterialDialog.Builder(this).customView(view, false).build().show();
-        DownloadManager.downloadApk(this, url, new HttpCallBack() {
+        DownloadManager.downloadApk(this, url, new HttpDownLoadCallBack() {
             @Override
             public void onLoading(final long current, final long total) {
                 //更新进度条
@@ -139,5 +110,13 @@ public class SplashActivity extends BaseActivity {
         });
     }
 
+    private void showErrorDialog(String content) {
+        MaterialDialogUtil.showMsgWithoutTitle(this, content, "确定", new MaterialDialog.SingleButtonCallback() {
+            @Override
+            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                finish();
+            }
+        });
+    }
 
 }

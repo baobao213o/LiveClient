@@ -1,6 +1,6 @@
 package com.live.network;
 
-public interface HttpCallBack {
+public interface HttpDownLoadCallBack {
 
     void onLoading(long current, long total);
 

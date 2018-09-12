@@ -18,19 +18,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".ui.splash.SplashActivity"
-            android:theme="@style/AppTheme.NoToolBar.Splash">
+            android:theme="@style/AppTheme.NoToolBar.Splash"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.juhe.AnchorListActivity" />
+        <activity android:name=".ui.juhe.AnchorListActivity"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".ui.juhe.BDLiveActivity"
-            android:theme="@style/AppTheme.NoToolBar" />
+            android:theme="@style/AppTheme.NoToolBar"
+            android:screenOrientation="portrait"
+            />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -41,6 +50,12 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <activity
+            android:name=".ui.my.NoticeActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"
+            />
     </application>
 
 </manifest>

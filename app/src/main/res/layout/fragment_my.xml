@@ -4,7 +4,42 @@
     android:id="@+id/srl_fragment_live"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="@color/grey_1"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/ll_fragment_my_container"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="3dp"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:id="@+id/tv_fragment_my_notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_notice_tip"
+            android:textSize="12sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_fragment_my_vername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="12sp"
+            />
+
+    </LinearLayout>
+
 
 
 </android.support.constraint.ConstraintLayout>

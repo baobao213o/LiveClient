@@ -77,7 +77,7 @@ dependencies {
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:${compiles.adapter}"
 
     //dialog
-    implementation ("com.afollestad.material-dialogs:core:${compiles.dialog}"){
+    implementation("com.afollestad.material-dialogs:core:${compiles.dialog}") {
         exclude group: 'com.android.support'
     }
 

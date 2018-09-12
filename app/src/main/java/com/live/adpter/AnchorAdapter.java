@@ -40,8 +40,9 @@ public class AnchorAdapter extends BaseQuickAdapter<Anchor.ZhuboBean, BaseViewHo
                 mContext.startActivity(intent);
             }
         });
-
     }
+
+
 
 
 }

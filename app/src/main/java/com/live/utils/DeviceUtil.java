@@ -28,5 +28,13 @@ public class DeviceUtil {
         return (int) (dpValue * scale + 0.5f);
     }
 
+    public static String getSystemVersion() {
+        return android.os.Build.VERSION.RELEASE;
+    }
+
+    public static String getSystemModel() {
+        return android.os.Build.MODEL;
+    }
+
 
 }

@@ -63,6 +63,7 @@ public class LiveMenuFragment extends Fragment {
     }
 
     private void requestData() {
+
         RetrofitManager.getInstance().getService(JuheService.class).getLiveMenu().enqueue(new Callback<JuheMenu>() {
             @Override
             public void onResponse(Call<JuheMenu> call, Response<JuheMenu> response) {

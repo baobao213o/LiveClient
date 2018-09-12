@@ -33,6 +33,17 @@ public class SecureValidate {
         return verCode;
     }
 
+    public static String getVerName() {
+        String verName = null;
+        try {
+            String pkName = LiveApp.getInstance().getPackageName();
+            verName = LiveApp.getInstance().getPackageManager().getPackageInfo(pkName, 0).versionName;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return verName;
+    }
+
     public static String printSignatureMD5() {
         try {
             PackageInfo packageInfo = LiveApp.getInstance().getPackageManager().getPackageInfo(LiveApp.getInstance().getPackageName(), PackageManager.GET_SIGNATURES);

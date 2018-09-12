@@ -9,5 +9,9 @@ public class Constant {
     //下载
     public final static String DOWN_URL = "down";
 
+    //公告
+    public final static String NOTICE_URL = "notice";
 
+    //反馈
+    public final static String FEEDBACK_URL = "feedback";
 }

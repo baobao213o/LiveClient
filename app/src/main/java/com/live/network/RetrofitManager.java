@@ -26,11 +26,12 @@ public class RetrofitManager {
 
     //    String server_url = "http://35.201.172.238:8080/live-nyannyannyan/";
     private static native String getRemoteUrl();
+
     //    String server_url = "http://192.168.191.1:8080/";
     private static native String getLocalDebugUrl();
+
     //    String server_url = "http://192.168.191.1:8080/live-nyannyannyan/";
     private static native String getLocalUrl();
-
 
 
     private OkHttpClient okHttpClient;
@@ -41,11 +42,9 @@ public class RetrofitManager {
 
     private ArrayMap<String, Object> serviceCacheMap;
 
-//    private final static String BASE_URL = getRemoteUrl();
-    private final static String BASE_URL = getLocalDebugUrl();
-//    private final static String BASE_URL = getLocalUrl();
-
-
+//    public final static String BASE_URL = getRemoteUrl();
+    public final static String BASE_URL = getLocalDebugUrl();
+//    public final static String BASE_URL = getLocalUrl();
 
     private RetrofitManager() {
         serviceCacheMap = new ArrayMap<>();
@@ -80,8 +79,8 @@ public class RetrofitManager {
                 .client(initOkHttpClient())
                 .baseUrl(url)
                 .build();
+        System.out.println(retrofit.baseUrl());
     }
-
 
     public <T> T getService(Class<T> service) {
         if (retrofit == null) {
@@ -122,6 +121,7 @@ public class RetrofitManager {
                 .writeTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(10, TimeUnit.SECONDS)
                 .hostnameVerifier(STRICT_HOSTNAME_VERIFIER)
+                .addInterceptor(new LogInterceptor(LogInterceptor.BODY))
                 .cache(cache)
                 .proxy(Proxy.NO_PROXY)
                 .build();

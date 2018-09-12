@@ -9,15 +9,14 @@ import com.live.utils.ServerInfoManager;
 public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
-    protected void onDestroy() {
-        RetrofitManager.getInstance().cancelAllRequest();
-        super.onDestroy();
-    }
-
-
-    @Override
     protected void onSaveInstanceState(Bundle outState) {
         ServerInfoManager.getInstance().saveServerInfo(outState);
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        RetrofitManager.getInstance().cancelAllRequest();
     }
 }

@@ -81,7 +81,9 @@ public class BDLiveActivity extends BaseActivity implements IMediaPlayer.OnPrepa
 //        mVV.toggleFrameChasing(true);
 
         // 初始化好之后立即播放（您也可以在onPrepared回调中调用该方法）
-        mVV.start();
+        if (!mVV.isPlaying()) {
+            mVV.start();
+        }
     }
 
     private float startY = 0;//手指按下时的Y坐标

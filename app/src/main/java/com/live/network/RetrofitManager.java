@@ -42,12 +42,15 @@ public class RetrofitManager {
 
     private ArrayMap<String, Object> serviceCacheMap;
 
-//    public final static String BASE_URL = getRemoteUrl();
-    public final static String BASE_URL = getLocalDebugUrl();
+    public final static String BASE_URL = getRemoteUrl();
+//    public final static String BASE_URL = getLocalDebugUrl();
 //    public final static String BASE_URL = getLocalUrl();
 
     private RetrofitManager() {
         serviceCacheMap = new ArrayMap<>();
+        if (retrofit == null) {
+            init();
+        }
     }
 
     public static RetrofitManager getInstance() {
@@ -79,13 +82,9 @@ public class RetrofitManager {
                 .client(initOkHttpClient())
                 .baseUrl(url)
                 .build();
-        System.out.println(retrofit.baseUrl());
     }
 
     public <T> T getService(Class<T> service) {
-        if (retrofit == null) {
-            init();
-        }
         T result = (T) serviceCacheMap.get(service.getName());
         if (result == null) {
             result = retrofit.create(service);

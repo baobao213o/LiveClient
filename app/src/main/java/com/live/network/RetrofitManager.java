@@ -2,7 +2,7 @@ package com.live.network;
 
 
 import android.content.Context;
-import android.support.v4.util.ArrayMap;
+import androidx.collection.ArrayMap;
 
 import com.live.LiveApp;
 

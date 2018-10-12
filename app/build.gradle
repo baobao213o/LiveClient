@@ -53,11 +53,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:appcompat-v7:${compiles.supportLibrary}"
-    implementation "com.android.support:support-v4:${compiles.supportLibrary}"
-    implementation "com.android.support:recyclerview-v7:${compiles.supportLibrary}"
+    implementation "androidx.appcompat:appcompat:${compiles.androidx}"
+    implementation "androidx.legacy:legacy-support-v4:${compiles.androidx}"
+    implementation "androidx.recyclerview:recyclerview:${compiles.androidx}"
 
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
 
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:${compiles.retrofit}"
@@ -74,7 +74,7 @@ dependencies {
     implementation "com.jakewharton:butterknife:${compiles.butterknife}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${compiles.butterknife}"
     //adapter
-    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:${compiles.adapter}"
+    implementation(name: 'adapter', ext: 'aar')
 
     //dialog
     implementation("com.afollestad.material-dialogs:core:${compiles.dialog}") {

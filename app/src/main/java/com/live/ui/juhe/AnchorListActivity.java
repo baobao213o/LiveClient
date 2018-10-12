@@ -1,9 +1,7 @@
 package com.live.ui.juhe;
 
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import android.os.Looper;
 
 import com.live.R;
 import com.live.adpter.AnchorAdapter;
@@ -15,6 +13,9 @@ import com.live.network.RetrofitManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.prototypez.savestate.core.annotation.AutoRestore;
@@ -44,6 +45,7 @@ public class AnchorListActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Looper.loop();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anchor);
         ButterKnife.bind(this);

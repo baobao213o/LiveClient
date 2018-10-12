@@ -6,13 +6,13 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.android.tools.build:gradle:3.2.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
         // dependency for save-state
         classpath "io.github.prototypez:save-state:0.1.8"
-        classpath "com.jakewharton:butterknife-gradle-plugin:8.8.1"
+        classpath "com.jakewharton:butterknife-gradle-plugin:9.0.0-rc1"
     }
 }
 
@@ -26,23 +26,23 @@ allprojects {
 
 ext {
     versions = [
-            'compileSdk' : 26,
-            'targetSdk'  : 26,
+            'compileSdk' : 28,
+            'targetSdk'  : 28,
             'minSdk'     : 21,
-            'buildTools' : '27.0.3',
+            'buildTools' : '28.0.3',
             'versionCode': 1,
-            'versionName': '1.0'
+            'versionName': '0.0.1'
     ]
     compiles = [
-            'supportLibrary': '27.1.1',
-            'retrofit'      : '2.3.0',
-            'gson'          : '2.8.2',
-            'leakcanary'    : '1.5.4',
-            'fresco'        : '0.12.0',
-            'butterknife'   : '8.8.1',
-            'adapter'       : '2.9.40',
-            'dialog'        : '0.9.6.0',
-            'menu'          : '0.2.3@aar',
+            'androidx'   : '1.0.0',
+            'retrofit'   : '2.3.0',
+            'gson'       : '2.8.2',
+            'leakcanary' : '1.5.4',
+            'fresco'     : '0.12.0',
+            'butterknife': '9.0.0-rc1',
+            'adapter'    : '2.9.40',
+            'dialog'     : '0.9.6.0',
+            'menu'       : '0.2.3@aar',
     ]
 }
 

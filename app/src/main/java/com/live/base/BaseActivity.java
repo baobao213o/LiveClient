@@ -1,10 +1,11 @@
 package com.live.base;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.live.network.RetrofitManager;
 import com.live.utils.ServerInfoManager;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public abstract class BaseActivity extends AppCompatActivity {
 

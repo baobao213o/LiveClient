@@ -1,7 +1,7 @@
 package com.live.base;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 public abstract class BaseFreshActivity extends BaseActivity {
 

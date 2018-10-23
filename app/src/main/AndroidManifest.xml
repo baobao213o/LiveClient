@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.live">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,29 +17,30 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ui.main.MainActivity"
-            android:screenOrientation="portrait"
-            />
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.splash.SplashActivity"
-            android:theme="@style/AppTheme.NoToolBar.Splash"
             android:screenOrientation="portrait"
-            >
+            android:theme="@style/AppTheme.NoToolBar.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.juhe.AnchorListActivity"
-            android:screenOrientation="portrait"
-            />
+        <activity
+            android:name=".ui.juhe.AnchorListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.juhe.BDLiveActivity"
-            android:theme="@style/AppTheme.NoToolBar"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait"
-            />
+            android:theme="@style/AppTheme.NoToolBar" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -52,9 +54,8 @@
 
         <activity
             android:name=".ui.my.NoticeActivity"
-            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"
-            />
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>

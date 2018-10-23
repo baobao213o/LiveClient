@@ -1,5 +1,7 @@
 package com.live.adpter;
 
+import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
@@ -36,14 +38,18 @@ public class AnchorAdapter extends BaseQuickAdapter<Anchor.ZhuboBean, BaseViewHo
         holder.getView(R.id.iv_anchor_avator).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, BDLiveActivity.class);
+                Intent intent = ((Activity) mContext).getIntent();
+                if (intent == null) {
+                    intent = new Intent(mContext, BDLiveActivity.class);
+                } else {
+                    ComponentName componentName = new ComponentName(mContext, BDLiveActivity.class);
+                    intent.setComponent(componentName);
+                }
                 intent.putExtra("url", item.address);
                 mContext.startActivity(intent);
             }
         });
     }
-
-
 
 
 }

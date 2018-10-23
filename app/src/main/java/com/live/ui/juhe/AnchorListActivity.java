@@ -1,7 +1,6 @@
 package com.live.ui.juhe;
 
 import android.os.Bundle;
-import android.os.Looper;
 
 import com.live.R;
 import com.live.adpter.AnchorAdapter;
@@ -45,7 +44,6 @@ public class AnchorListActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Looper.loop();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anchor);
         ButterKnife.bind(this);
@@ -58,7 +56,6 @@ public class AnchorListActivity extends BaseActivity {
 
         toolbar_activity_anchor.setTitle(title);
         setSupportActionBar(toolbar_activity_anchor);
-
 
         srl_activity_anchor.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -76,6 +73,14 @@ public class AnchorListActivity extends BaseActivity {
         });
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        //从home点进来 跳轉到直播页
+        if (BDLiveActivity.startBackground == 1) {
+            startActivity(getIntent());
+        }
+    }
 
     private void requestData() {
         RetrofitManager.getInstance().getService(JuheService.class).getAnchor(addr).enqueue(new Callback<Anchor>() {
@@ -95,6 +100,4 @@ public class AnchorListActivity extends BaseActivity {
             }
         });
     }
-
-
 }

@@ -102,7 +102,7 @@ public class LogInterceptor implements Interceptor {
                 }
             }
         } catch (Exception e) {
-            CommonLogger.printStackTrace(e);
+            CommonLogger.INSTANCE.printStackTrace(e);
         } finally {
             log("--> END " + request.method());
         }
@@ -110,7 +110,7 @@ public class LogInterceptor implements Interceptor {
 
 
     private void log(String message) {
-        CommonLogger.e(message);
+        CommonLogger.INSTANCE.e(message);
     }
 
     private Response logForResponse(Response response, long tookMs, Chain chain) {
@@ -145,7 +145,7 @@ public class LogInterceptor implements Interceptor {
                 }
             }
         } catch (Exception e) {
-            CommonLogger.printStackTrace(e);
+            CommonLogger.INSTANCE.printStackTrace(e);
         } finally {
             log("<-- END HTTP");
         }
@@ -184,7 +184,7 @@ public class LogInterceptor implements Interceptor {
             Charset charset = getCharset(body.contentType());
             log("\tbody:" + buffer.readString(charset));
         } catch (Exception e) {
-            CommonLogger.printStackTrace(e);
+            CommonLogger.INSTANCE.printStackTrace(e);
         }
     }
 }

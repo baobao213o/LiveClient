@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'save.state'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -70,9 +71,6 @@ dependencies {
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${compiles.leakcanary}"
     //fresco
     implementation "com.facebook.fresco:fresco:${compiles.fresco}"
-    //butterknife
-    implementation "com.jakewharton:butterknife:${compiles.butterknife}"
-    annotationProcessor "com.jakewharton:butterknife-compiler:${compiles.butterknife}"
     //adapter
     implementation(name: 'adapter', ext: 'aar')
 
@@ -82,5 +80,9 @@ dependencies {
     }
 
     implementation(name: 'menu', ext: 'aar')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+}
+repositories {
+    mavenCentral()
 }

@@ -25,6 +25,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public void finish() {
         super.finish();
-        RetrofitManager.getInstance().cancelAllRequest();
+        RetrofitManager.Companion.getInstance().cancelAllRequest();
     }
 }

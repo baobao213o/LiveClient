@@ -49,7 +49,7 @@ public class IOUtil {
         try {
             closeable.close();
         } catch (Exception e) {
-            CommonLogger.printStackTrace(e);
+            CommonLogger.INSTANCE.printStackTrace(e);
         }
     }
 
@@ -58,7 +58,7 @@ public class IOUtil {
         try {
             flushable.flush();
         } catch (Exception e) {
-            CommonLogger.printStackTrace(e);
+            CommonLogger.INSTANCE.printStackTrace(e);
         }
     }
 
@@ -125,7 +125,7 @@ public class IOUtil {
             oos.flush();
             return baos.toByteArray();
         } catch (IOException e) {
-            CommonLogger.printStackTrace(e);
+            CommonLogger.INSTANCE.printStackTrace(e);
         } finally {
             IOUtil.closeQuietly(oos);
             IOUtil.closeQuietly(baos);
@@ -142,7 +142,7 @@ public class IOUtil {
             ois = new ObjectInputStream(bais);
             return ois.readObject();
         } catch (Exception e) {
-            CommonLogger.printStackTrace(e);
+            CommonLogger.INSTANCE.printStackTrace(e);
         } finally {
             IOUtil.closeQuietly(ois);
             IOUtil.closeQuietly(bais);
@@ -370,7 +370,7 @@ public class IOUtil {
         try {
             stat = new StatFs(path);
         } catch (Exception e) {
-            CommonLogger.printStackTrace(e);
+            CommonLogger.INSTANCE.printStackTrace(e);
             return 0;
         }
         return getStatFsSize(stat, "getBlockSizeLong", "getAvailableBlocksLong");
@@ -388,7 +388,7 @@ public class IOUtil {
             long availableBlocks = (Long) getAvailableBlocksMethod.invoke(statFs);
             return blockSize * availableBlocks;
         } catch (Throwable e) {
-            CommonLogger.printStackTrace(e);
+            CommonLogger.INSTANCE.printStackTrace(e);
         }
         return 0;
     }

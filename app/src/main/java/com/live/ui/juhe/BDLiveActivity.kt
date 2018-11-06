@@ -183,9 +183,7 @@ class BDLiveActivity : BaseActivity(), IMediaPlayer.OnPreparedListener, IMediaPl
         if (isClickBack) {
             return
         }
-        if (vv_activty_bdlive != null) {
-            vv_activty_bdlive.enterForeground()
-        }
+        vv_activty_bdlive?.enterForeground()
     }
 
     override fun onResume() {

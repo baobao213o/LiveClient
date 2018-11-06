@@ -12,7 +12,7 @@ extern "C" {
  * Method:    getRemoteUrl
  * Signature: ()Ljava/lang/String;
  */
-JNIEXPORT jstring JNICALL Java_com_live_network_RetrofitManager_getRemoteUrl
+JNIEXPORT jstring JNICALL Java_com_live_network_RetrofitManager_00024Companion_getRemoteUrl
   (JNIEnv *, jclass);
 
 /*
@@ -20,7 +20,7 @@ JNIEXPORT jstring JNICALL Java_com_live_network_RetrofitManager_getRemoteUrl
  * Method:    getLocalDebugUrl
  * Signature: ()Ljava/lang/String;
  */
-JNIEXPORT jstring JNICALL Java_com_live_network_RetrofitManager_getLocalDebugUrl
+JNIEXPORT jstring JNICALL Java_com_live_network_RetrofitManager_00024Companion_getLocalDebugUrl
   (JNIEnv *, jclass);
 
 /*
@@ -28,7 +28,7 @@ JNIEXPORT jstring JNICALL Java_com_live_network_RetrofitManager_getLocalDebugUrl
  * Method:    getLocalUrl
  * Signature: ()Ljava/lang/String;
  */
-JNIEXPORT jstring JNICALL Java_com_live_network_RetrofitManager_getLocalUrl
+JNIEXPORT jstring JNICALL Java_com_live_network_RetrofitManager_00024Companion_getLocalUrl
   (JNIEnv *, jclass);
 
 #ifdef __cplusplus

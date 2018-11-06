@@ -41,7 +41,7 @@ private constructor() {
 
 
     fun applyNewUrl(url: String) {
-        if (retrofit!!.baseUrl().toString() == url) {
+        if (retrofit?.baseUrl().toString() == url) {
             return
         }
         retrofit = Retrofit.Builder()
@@ -81,16 +81,16 @@ private constructor() {
         }
 
         //    String server_url = "http://35.201.172.238:8080/live-nyannyannyan/";
-//        private external fun getRemoteUrl(): String
+        private external fun getRemoteUrl(): String
 
         //    String server_url = "http://192.168.191.1:8080/";
-//        private external fun getLocalDebugUrl(): String
+        private external fun getLocalDebugUrl(): String
 
         //    String server_url = "http://192.168.191.1:8080/live-nyannyannyan/";
-//        private external fun getLocalUrl(): String
+        private external fun getLocalUrl(): String
 
 
-        private val remoteUrl = "http://35.201.172.238:8080/live-nyannyannyan/"
+        private val remoteUrl = getRemoteUrl()
 
 //        private val localDebugUrl = getLocalDebugUrl()
 

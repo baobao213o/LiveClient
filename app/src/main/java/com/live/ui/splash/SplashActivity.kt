@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.customview.customView
 import com.live.R
 import com.live.R.layout.dialog_tip
 import com.live.api.MainService
@@ -29,24 +30,24 @@ class SplashActivity : BaseActivity() {
                 ServerInfoManager.getInstance().setServerInfo(data)
                 val curVerCode = SecureValidate.verCode
                 if (curVerCode < data.version) {
-                    MaterialDialogUtil.showMsgWithoutTitle(this@SplashActivity, "更新啦", "更新", MaterialDialog.SingleButtonCallback { _, _ ->
+                    MaterialDialogUtil.showMsgWithoutTitle(this@SplashActivity, "更新啦", "更新") {
                         if (!NetworkUtil.isWifiConnected) {
-                            MaterialDialogUtil.showMsgWithoutTitle(this@SplashActivity, "未连接到WiFi，是否继续？", "确定") { _, _ -> fetchDownLoad(data.update_addr) }
-                            return@SingleButtonCallback
+                            MaterialDialogUtil.showMsgWithoutTitle(this@SplashActivity, "未连接到WiFi，是否继续？", "确定") { fetchDownLoad(data.update_addr) }
+                            return@showMsgWithoutTitle
                         }
                         fetchDownLoad(data.update_addr)
-                    })
+                    }
                     return
                 }
                 if (!TextUtils.isEmpty(data.hongbao_addr)) {
-                    MaterialDialog.Builder(this@SplashActivity).content("点一点支付宝领红包").positiveText("试试").onPositive { _, _ ->
+                    MaterialDialog(this@SplashActivity).message(null, "点一点支付宝领红包").positiveButton(null, "试试") {
                         val uri = Uri.parse(data.hongbao_addr)
                         val browserIntent = Intent(Intent.ACTION_VIEW, uri)
                         val mainIntent = Intent(this@SplashActivity, MainActivity::class.java)
                         val intents = arrayOf(mainIntent, browserIntent)
                         startActivities(intents)
                         finish()
-                    }.negativeText("鬼信").onNegative { _, _ -> jump() }.cancelable(false).build().show()
+                    }.negativeButton(null, "鬼信") { jump() }.cancelable(false).show()
                 } else {
                     jump()
                 }
@@ -66,7 +67,7 @@ class SplashActivity : BaseActivity() {
 
 
     private fun fetchDownLoad(url: String) {
-        MaterialDialog.Builder(this).customView(dialog_tip, false).build().show()
+        MaterialDialog(this).customView(dialog_tip).show()
         DownloadManager.downloadApk(this, url, HttpDownLoadCallBack { current, total ->
             //更新进度条
             runOnUiThread { tv_common_dialog_tip.text = "下载进度:${(current.toFloat() / total * 100).toInt()}" }

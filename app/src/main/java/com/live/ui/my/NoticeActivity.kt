@@ -37,7 +37,7 @@ class NoticeActivity : BaseActivity() {
             }
         })
 
-        btn_activity_notice_send.setOnClickListener { _ ->
+        btn_activity_notice_send.setOnClickListener {
             val notice = Notice()
             notice.feedbackContent = et_activity_notice_send!!.text.toString().trim { it <= ' ' }
             notice.feedbackModel = DeviceUtil.systemModel
@@ -49,8 +49,8 @@ class NoticeActivity : BaseActivity() {
 
 
             RetrofitManager.getInstance()?.getService(MainService::class.java)?.postFeedback(notice)?.enqueue(CheckBaseServerInfoResult(this, object : CheckBaseServerInfoResult.HttpCallBack<Boolean> {
-                override fun onSucess(data: Boolean?) {
-                    if (data!!) {
+                override fun onSucess(data: Boolean) {
+                    if (data) {
                         val noticeS = Notice()
                         noticeS.noticeContent = "感谢反馈"
                         adapter!!.addData(noticeS)

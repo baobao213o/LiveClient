@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Environment
 import androidx.core.content.FileProvider
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.callbacks.onCancel
 import com.live.LiveApp
 import com.live.api.MainService
 import com.live.network.HttpDownLoadCallBack
@@ -130,9 +131,6 @@ object DownloadManager {
     }
 
     private fun showErrorDialog(activity: Activity, content: String) {
-
-
-        MaterialDialog.Builder(activity).content(content).onPositive { _, _ -> activity.finish() }.positiveText("确定").cancelListener { activity.finish() }.build().show()
-
+        MaterialDialog(activity).message(null,content).positiveButton(null,"确定") {  activity.finish() }.onCancel{ activity.finish() }.show()
     }
 }

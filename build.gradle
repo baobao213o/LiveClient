@@ -39,7 +39,7 @@ ext {
             'leakcanary' : '1.5.4',
             'fresco'     : '0.12.0',
             'adapter'    : '2.9.40',
-            'dialog'     : '0.9.6.0',
+            'dialog'     : '2.0.0-beta4',
             'menu'       : '0.2.3@aar',
     ]
 }
